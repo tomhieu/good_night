@@ -5,6 +5,12 @@ Rails.application.routes.draw do
       resources :users, only: [] do
         resources :clocked_times, only: %i[create index]
       end
+
+      resources :friend_relationships, only: [:create] do
+        member do
+          post :confirm
+        end
+      end
     end
   end
 end

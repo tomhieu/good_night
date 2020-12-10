@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_10_012247) do
+ActiveRecord::Schema.define(version: 2020_12_10_024310) do
 
   create_table "clocked_times", force: :cascade do |t|
     t.string "action"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(version: 2020_12_10_012247) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["sleep_id"], name: "index_clocked_times_on_sleep_id"
+  end
+
+  create_table "friend_relationships", force: :cascade do |t|
+    t.integer "requester_id"
+    t.integer "acceptor_id"
+    t.boolean "confirmed", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["acceptor_id"], name: "index_friend_relationships_on_acceptor_id"
+    t.index ["requester_id"], name: "index_friend_relationships_on_requester_id"
   end
 
   create_table "sleeps", force: :cascade do |t|
