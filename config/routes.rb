@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [] do
         resources :clocked_times, only: %i[create index]
+        resources :sleeps, only: [:index]
       end
 
       resources :friend_relationships, only: [:create] do

@@ -5,6 +5,8 @@ class FriendRelationship < ApplicationRecord
   validate :uniqueness_of_relationship, on: :create
   validate :different_requester_and_acceptor
 
+  scope :confirmed, -> {where(confirmed: true)}
+
   private
 
   def uniqueness_of_relationship
